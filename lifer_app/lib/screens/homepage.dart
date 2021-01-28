@@ -6,22 +6,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red[400],
+        backgroundColor: Colors.white,
         elevation: 0.0,
         actions: [
           IconButton(
+            color: Colors.grey,
             icon: Icon(Icons.logout),
             onPressed: () {},
           ),
         ],
       ),
       body: Container(
-        color: Colors.red[400],
+        color: Colors.white,
         child: Column(
           children: [
             Container(
               alignment: Alignment.topCenter,
-              margin: EdgeInsets.fromLTRB(80.0, 20.0, 80.0, 10.0),
+              margin: EdgeInsets.fromLTRB(80.0, 40.0, 80.0, 0.0),
               child: Image(image: AssetImage('assets/images/lifer_logo.png')),
             ),
             Container(
@@ -29,16 +30,16 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 20.0),
+                    margin: EdgeInsets.only(top: 10.0),
                     child: Text(
                       'Lifer. Gigishan',
-                      style: TextStyle(fontSize: 23.0),
+                      style: TextStyle(fontSize: 21.0),
                     ),
                   ),
                   Container(
                     width: 48.0,
                     height: 48.0,
-                    margin: EdgeInsets.only(right: 10.0, top: 20.0),
+                    margin: EdgeInsets.only(right: 10.0, top: 10.0),
                     child: IconButton(
                       icon: Icon(Icons.settings),
                       onPressed: () {},
