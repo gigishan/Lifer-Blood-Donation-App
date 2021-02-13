@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
+class PostPage extends StatefulWidget {
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _PostPageState createState() => _PostPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-  String bTypeDropdownValue = 'A+';
+class _PostPageState extends State<PostPage> {
+  String cityDropdownValue = 'Anuradhapura';
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +26,15 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'First Name',
-                  hintText: 'John',
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                ),
-              ),
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.fromLTRB(100.0, 0.0, 100.0, 0.0),
+              child: Image(image: AssetImage('assets/images/post_camp.png')),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Last Name',
-                  hintText: 'Doe',
+                  labelText: 'Campaign Name',
                   labelStyle: TextStyle(
                     color: Colors.grey,
                   ),
@@ -53,66 +42,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderSide: BorderSide(color: Colors.grey),
                   ),
                 ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'user@gmail.com',
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Contact Number',
-                  hintText: '0712345678',
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                ),
-                obscureText: true,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Confirm Password',
-                  labelStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                ),
-                obscureText: true,
               ),
             ),
             Row(
@@ -120,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Container(
                   margin: EdgeInsets.only(left: 30.0, top: 30.0),
                   child: Text(
-                    'Blood Group :',
+                    'City                 :',
                     style: TextStyle(color: Colors.grey[600], fontSize: 16.0),
                   ),
                 ),
@@ -130,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Material(
                     borderRadius: BorderRadius.circular(20.0),
                     child: DropdownButton<String>(
-                      value: bTypeDropdownValue,
+                      value: cityDropdownValue,
                       icon: Icon(Icons.arrow_drop_down_outlined),
                       iconSize: 24,
                       elevation: 16,
@@ -141,18 +70,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       onChanged: (String newValue) {
                         setState(() {
-                          bTypeDropdownValue = newValue;
+                          cityDropdownValue = newValue;
                         });
                       },
                       items: <String>[
-                        'A+',
-                        'A-',
-                        'B+',
-                        'B-',
-                        'O+',
-                        'O-',
-                        'AB+',
-                        'AB-'
+                        'Anuradhapura',
+                        'Colombo',
+                        'Gampaha',
+                        'Kurunegala',
+                        'Jaffna',
+                        'Galle',
+                        'Kandy',
+                        'Matara'
                       ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -165,7 +94,63 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 40.0),
+              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Location',
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Contact Person Name',
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Contact Person Number',
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Contact Number 2 (optional)',
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 30.0),
               height: 40.0,
               width: 130.0,
               child: Material(
@@ -175,7 +160,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   onTap: () {},
                   child: Center(
                     child: Text(
-                      'SAVE',
+                      'POST',
                       style: TextStyle(fontSize: 19.0, color: Colors.white),
                     ),
                   ),
