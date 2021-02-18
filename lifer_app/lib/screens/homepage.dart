@@ -52,57 +52,41 @@ class HomePage extends StatelessWidget {
               children: [
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.fromLTRB(40.0, 20.0, 80.0, 10.0),
+                  margin: EdgeInsets.fromLTRB(50.0, 40.0, 30.0, 10.0),
                   child: InkWell(
                     onTap: () {},
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50.0),
-                      child: Image.asset('assets/images/blood_request.png',
-                          width: 120.0, height: 120.0),
+                      child: Image.asset('assets/images/blood_navigate.png',
+                          width: 90.0, height: 100.0),
                     ),
                   ),
                 ),
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 10.0),
+                  margin: EdgeInsets.fromLTRB(90.0, 50.0, 10.0, 20.0),
                   child: InkWell(
                     onTap: () {},
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50.0),
-                      child: Image.asset('assets/images/blood_nearby.png',
-                          width: 100.0, height: 100.0),
+                      child: Image.asset('assets/images/camp.png',
+                          width: 90.0, height: 90.0),
                     ),
                   ),
                 ),
               ],
             ),
-            Row(
-              children: [
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.fromLTRB(40.0, 50.0, 50.0, 10.0),
-                  child: InkWell(
-                    onTap: () {},
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50.0),
-                      child: Image.asset('assets/images/post_camp.png',
-                          width: 130.0, height: 130.0),
-                    ),
-                  ),
+            Container(
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.fromLTRB(100.0, 20.0, 80.0, 10.0),
+              child: InkWell(
+                onTap: () {},
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  child: Image.asset('assets/images/blood_request.png',
+                      width: 120.0, height: 140.0),
                 ),
-                Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.fromLTRB(10.0, 50.0, 30.0, 10.0),
-                  child: InkWell(
-                    onTap: () {},
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50.0),
-                      child: Image.asset('assets/images/history.png',
-                          width: 110.0, height: 110.0),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ],
         ),

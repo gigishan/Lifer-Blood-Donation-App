@@ -27,11 +27,11 @@ class _PostPageState extends State<PostPage> {
           children: [
             Container(
               alignment: Alignment.topCenter,
-              margin: EdgeInsets.fromLTRB(100.0, 0.0, 100.0, 0.0),
+              margin: EdgeInsets.fromLTRB(140.0, 0.0, 130.0, 0.0),
               child: Image(image: AssetImage('assets/images/post_camp.png')),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+              margin: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Campaign Name',
