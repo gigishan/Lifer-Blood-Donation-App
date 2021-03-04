@@ -28,7 +28,7 @@ class _PostPageState extends State<PostPage> {
             Container(
               alignment: Alignment.topCenter,
               margin: EdgeInsets.fromLTRB(140.0, 0.0, 130.0, 0.0),
-              child: Image(image: AssetImage('assets/images/post_camp.png')),
+              child: Image(image: AssetImage('assets/images/camp.png')),
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),

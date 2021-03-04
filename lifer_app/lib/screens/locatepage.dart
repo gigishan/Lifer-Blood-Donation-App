@@ -2,14 +2,14 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NavigatePage extends StatefulWidget {
-  NavigatePage({Key key}) : super(key: key);
+class LocatePage extends StatefulWidget {
+  LocatePage({Key key}) : super(key: key);
 
   @override
-  _NavigatePageState createState() => _NavigatePageState();
+  _LocatePageState createState() => _LocatePageState();
 }
 
-class _NavigatePageState extends State<NavigatePage> {
+class _LocatePageState extends State<LocatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
