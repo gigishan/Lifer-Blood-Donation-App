@@ -21,6 +21,8 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              height: 190,
+              width: 190,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.fromLTRB(80.0, 20.0, 80.0, 0.0),
               child: Image(image: AssetImage('assets/images/lifer_logo.png')),
@@ -30,33 +32,39 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 30.0),
+                    margin: EdgeInsets.only(
+                      top: 30.0,
+                    ),
                     child: Text(
                       'Lifer. Gigishan',
-                      style: TextStyle(fontSize: 21.0),
+                      style: TextStyle(fontSize: 18.0),
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(top: 30.0, right: 60.0),
                     width: 48.0,
                     height: 48.0,
-                    margin: EdgeInsets.only(right: 10.0, top: 30.0),
                     child: IconButton(
                       icon: Icon(Icons.settings),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/settings');
+                      },
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 50.0),
+              margin: EdgeInsets.only(top: 40.0),
               height: 70.0,
-              width: 220.0,
+              width: 200.0,
               child: Material(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(50.0),
                 color: Colors.red[400],
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/request');
+                  },
                   child: Center(
                     child: Text(
                       'BLOOD REQUEST',
@@ -69,12 +77,14 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 20.0),
               height: 70.0,
-              width: 220.0,
+              width: 200.0,
               child: Material(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(50.0),
                 color: Colors.red[400],
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/locate');
+                  },
                   child: Center(
                     child: Text(
                       'LOCATE',
@@ -87,12 +97,14 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 20.0),
               height: 70.0,
-              width: 220.0,
+              width: 200.0,
               child: Material(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(50.0),
                 color: Colors.red[400],
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/post');
+                  },
                   child: Center(
                     child: Text(
                       'POST CAMPAIGN',

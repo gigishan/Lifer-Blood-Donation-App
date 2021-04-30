@@ -10,7 +10,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'EMAIL',
                   labelStyle: TextStyle(
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 20.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'PASSWORD',
                   labelStyle: TextStyle(
@@ -87,7 +87,9 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(20.0),
                 color: Colors.red[400],
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
                   child: Center(
                     child: Text(
                       'REGISTER',

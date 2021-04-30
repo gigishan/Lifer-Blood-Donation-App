@@ -5,14 +5,16 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
           color: Colors.grey,
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/');
+          },
         ),
       ),
       body: Column(
@@ -48,7 +50,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'First Name',
                 hintText: 'Gigishan',
@@ -63,7 +65,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Last Name',
                 hintText: 'Karunarathne',
@@ -78,7 +80,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Email',
                 hintText: 'gigishan@gmail.com',
@@ -93,7 +95,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Contact Number',
                 hintText: '0712345678',
@@ -108,7 +110,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Password',
                 labelStyle: TextStyle(
@@ -123,7 +125,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 labelText: 'Confirm Password',
                 labelStyle: TextStyle(

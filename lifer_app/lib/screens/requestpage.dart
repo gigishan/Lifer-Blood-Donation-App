@@ -13,14 +13,16 @@ class _RequestPageState extends State<RequestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
           color: Colors.grey,
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/');
+          },
         ),
       ),
       body: Container(
@@ -132,7 +134,7 @@ class _RequestPageState extends State<RequestPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Hospital Name',
                   labelStyle: TextStyle(
@@ -146,7 +148,7 @@ class _RequestPageState extends State<RequestPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Name',
                   labelStyle: TextStyle(
@@ -160,7 +162,7 @@ class _RequestPageState extends State<RequestPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Contact Number',
                   labelStyle: TextStyle(

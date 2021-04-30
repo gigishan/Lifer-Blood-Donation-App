@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lifer_app/screens/homepage.dart';
 import 'package:lifer_app/screens/loginpage.dart';
@@ -16,6 +17,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: PostPage(),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => HomePage(),
+      //   '/request': (context) => RequestPage(),
+      //   '/post': (context) => PostPage(),
+      //   '/locate': (context) => LocatePage(),
+      //   '/settings': (context) => SettingsPage(),
+      //   '/login': (context) => LoginPage(),
+      //   '/register': (context) => RegisterPage(),
+      // },
     );
   }
 }

@@ -12,14 +12,16 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
           color: Colors.grey,
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/login');
+          },
         ),
       ),
       body: Container(
@@ -27,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'First Name',
                   hintText: 'John',
@@ -42,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Last Name',
                   hintText: 'Doe',
@@ -57,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Email',
                   hintText: 'user@gmail.com',
@@ -72,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Contact Number',
                   hintText: '0712345678',
@@ -87,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Password',
                   labelStyle: TextStyle(
@@ -102,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-              child: TextField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
                   labelStyle: TextStyle(
