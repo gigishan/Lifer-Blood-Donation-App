@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,28 +7,7 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  TextEditingController _campaignNameController,
-      _cityController,
-      _locationController,
-      _contactNameController,
-      _contactNumberController,
-      _contactNumberTwoController;
-
   String cityDropdownValue = 'Anuradhapura';
-
-  DatabaseReference _ref;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _campaignNameController = TextEditingController();
-    _cityController = TextEditingController();
-    _locationController = TextEditingController();
-    _contactNameController = TextEditingController();
-    _contactNumberController = TextEditingController();
-    _contactNumberTwoController = TextEditingController();
-    _ref = FirebaseDatabase.instance.reference().child('Campaigns');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +35,6 @@ class _PostPageState extends State<PostPage> {
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),
               child: TextFormField(
-                controller: _campaignNameController,
                 decoration: InputDecoration(
                   labelText: 'Campaign Name',
                   labelStyle: TextStyle(
@@ -121,7 +98,6 @@ class _PostPageState extends State<PostPage> {
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
               child: TextFormField(
-                controller: _locationController,
                 decoration: InputDecoration(
                   labelText: 'Location',
                   labelStyle: TextStyle(
@@ -136,7 +112,6 @@ class _PostPageState extends State<PostPage> {
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
               child: TextFormField(
-                controller: _contactNameController,
                 decoration: InputDecoration(
                   labelText: 'Contact Person Name',
                   labelStyle: TextStyle(
@@ -151,7 +126,6 @@ class _PostPageState extends State<PostPage> {
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
               child: TextFormField(
-                controller: _contactNumberController,
                 decoration: InputDecoration(
                   labelText: 'Contact Person Number',
                   labelStyle: TextStyle(
@@ -166,7 +140,6 @@ class _PostPageState extends State<PostPage> {
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
               child: TextFormField(
-                controller: _contactNumberTwoController,
                 decoration: InputDecoration(
                   labelText: 'Contact Number 2 (optional)',
                   labelStyle: TextStyle(
@@ -186,9 +159,7 @@ class _PostPageState extends State<PostPage> {
                 borderRadius: BorderRadius.circular(20.0),
                 color: Colors.red,
                 child: GestureDetector(
-                  onTap: () {
-                    postCamp();
-                  },
+                  onTap: () {},
                   child: Center(
                     child: Text(
                       'POST',
@@ -202,27 +173,5 @@ class _PostPageState extends State<PostPage> {
         ),
       ),
     );
-  }
-
-  void postCamp() {
-    String campName = _campaignNameController.text;
-    String city = _cityController.text;
-    String location = _locationController.text;
-    String contactName = _contactNameController.text;
-    String contactNumber = _contactNumberController.text;
-    String contactNumberTwo = _contactNumberTwoController.text;
-
-    Map<String, String> campaign = {
-      'campName': campName,
-      'city': city,
-      'location': location,
-      'contactName': contactName,
-      'contactNum1': contactNumber,
-      'contactNum2': contactNumberTwo,
-    };
-
-    _ref.push().set(campaign).then((value) {
-      Navigator.pushNamed(context, '/');
-    });
   }
 }
