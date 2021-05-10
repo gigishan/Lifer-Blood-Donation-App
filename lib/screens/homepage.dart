@@ -110,13 +110,13 @@ class HomePage extends StatelessWidget {
               child: Text('liferapplk@gmail.com',
                   style: TextStyle(fontSize: 12.0, color: Colors.black54)),
             ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              child: Text('Developed & Maintained by GiGiSHANSOFT',
-                  style: TextStyle(fontSize: 10.0, color: Colors.black54)),
-            )
+            // SizedBox(
+            //   height: 5.0,
+            // ),
+            // Container(
+            //   child: Text('Developed & Maintained by GiGiSHANSOFT',
+            //       style: TextStyle(fontSize: 10.0, color: Colors.black54)),
+            // )
           ],
         ),
       ),
