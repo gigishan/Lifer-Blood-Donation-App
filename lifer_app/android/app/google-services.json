@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "113157988307",
-    "project_id": "lifer-blood-donation-app",
-    "storage_bucket": "lifer-blood-donation-app.appspot.com"
+    "project_number": "836221753223",
+    "project_id": "lifer-app-ff6c9",
+    "storage_bucket": "lifer-app-ff6c9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:113157988307:android:cc2b116bdee14437009926",
+        "mobilesdk_app_id": "1:836221753223:android:fb9bb2fe700171f5aaa522",
         "android_client_info": {
           "package_name": "com.gigishansoft.lifer_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "113157988307-6p455oofolk1kprknp2c6geg9po4jnv8.apps.googleusercontent.com",
+          "client_id": "836221753223-akb8381h40sdjgi3kl27do4adu9b7arv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBMLTmVnWLypWuvOZbMg6ybfb6a9Vju1KQ"
+          "current_key": "AIzaSyAzJZZOTDtJ0VNdcwSU6uDhv21Ezg-MFk0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "113157988307-6p455oofolk1kprknp2c6geg9po4jnv8.apps.googleusercontent.com",
+              "client_id": "836221753223-akb8381h40sdjgi3kl27do4adu9b7arv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

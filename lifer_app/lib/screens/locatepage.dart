@@ -1,6 +1,12 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lifer_app/models/bloodRequest.dart';
+import 'package:lifer_app/models/campaign.dart';
+import 'package:lifer_app/services/databaseService.dart';
+
+import 'postpage.dart';
+import 'requestpage.dart';
 
 class LocatePage extends StatefulWidget {
   LocatePage({Key key}) : super(key: key);
@@ -9,11 +15,12 @@ class LocatePage extends StatefulWidget {
   _LocatePageState createState() => _LocatePageState();
 }
 
+String cityDropdownValue = 'Anuradhapura';
+
 class _LocatePageState extends State<LocatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -56,10 +63,10 @@ class _LocatePageState extends State<LocatePage> {
               Expanded(
                 child: TabBarView(
                   children: <Widget>[
+                    Center(child: BloodRequestCard()),
                     Center(child: Cards()),
                     Center(child: Cards()),
-                    Center(child: Cards()),
-                    Center(child: Cards()),
+                    Center(child: CampaignCard()),
                   ],
                 ),
               ),
@@ -77,8 +84,6 @@ class Cards extends StatefulWidget {
 }
 
 class _CardsState extends State<Cards> {
-  String cityDropdownValue = 'Anuradhapura';
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -86,24 +91,6 @@ class _CardsState extends State<Cards> {
         children: [
           Row(
             children: [
-              Container(
-                margin: EdgeInsets.only(top: 20.0, left: 20.0),
-                height: 30.0,
-                width: 118.0,
-                child: Material(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: Colors.red,
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Center(
-                      child: Text(
-                        'MY LOCATION',
-                        style: TextStyle(fontSize: 15.0, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Container(
                 margin: EdgeInsets.only(left: 15.0, top: 20.0),
                 child: Text(
@@ -310,5 +297,332 @@ class _CardsState extends State<Cards> {
         ],
       ),
     );
+  }
+}
+
+class CampaignCard extends StatefulWidget {
+  @override
+  _CampaignCardState createState() => _CampaignCardState();
+}
+
+class _CampaignCardState extends State<CampaignCard> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<List<Campaign>>(
+        stream: DatabaseService().getAllCampaigns,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData)
+            return Center(
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(),
+              ),
+            );
+          List<Campaign> list = snapshot.data;
+          list.retainWhere((element) => element.city == cityDropdownValue);
+          return Container(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 15.0, top: 20.0),
+                      child: Text(
+                        'SELECT CITY :',
+                        style:
+                            TextStyle(color: Colors.grey[600], fontSize: 15.0),
+                      ),
+                    ),
+                    Container(
+                      height: 35.0,
+                      margin: EdgeInsets.only(left: 5.0, top: 20.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: DropdownButton<String>(
+                          value: cityDropdownValue,
+                          icon: Icon(Icons.arrow_drop_down_outlined),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 1.0,
+                            color: Colors.grey,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              cityDropdownValue = newValue;
+                            });
+                          },
+                          items: <String>[
+                            'Anuradhapura',
+                            'Colombo',
+                            'Gampaha',
+                            'Kurunegala',
+                            'Jaffna',
+                            'Galle',
+                            'Kandy',
+                            'Matara'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView(
+                      children: list
+                          .map(
+                            (e) => Card(
+                              elevation: 5,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin:
+                                        EdgeInsets.only(left: 10.0, top: 10.0),
+                                    alignment: Alignment.topLeft,
+                                    child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: IconButton(
+                                          alignment: Alignment.topRight,
+                                          iconSize: 20,
+                                          icon: Icon(Icons.edit),
+                                          onPressed: () =>
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          PostPage(
+                                                    id: e.id,
+                                                  ),
+                                                ),
+                                              )),
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          '${e.name}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          '${e.location}',
+                                          style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0,
+                                            top: 10.0,
+                                            bottom: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          '${e.contactPersonName} : ${e.contactPersonNumber} ',
+                                          style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                          .toList()),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+}
+
+class BloodRequestCard extends StatefulWidget {
+  @override
+  _BloodRequestCardState createState() => _BloodRequestCardState();
+}
+
+class _BloodRequestCardState extends State<BloodRequestCard> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<List<BloodRequest>>(
+        stream: DatabaseService().getAllBloodRequests,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData)
+            return Center(
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(),
+              ),
+            );
+          List<BloodRequest> list = snapshot.data;
+          list.retainWhere((element) => element.city == cityDropdownValue);
+          return Container(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 15.0, top: 20.0),
+                      child: Text(
+                        'SELECT CITY :',
+                        style:
+                            TextStyle(color: Colors.grey[600], fontSize: 15.0),
+                      ),
+                    ),
+                    Container(
+                      height: 35.0,
+                      margin: EdgeInsets.only(left: 5.0, top: 20.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: DropdownButton<String>(
+                          value: cityDropdownValue,
+                          icon: Icon(Icons.arrow_drop_down_outlined),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 1.0,
+                            color: Colors.grey,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              cityDropdownValue = newValue;
+                            });
+                          },
+                          items: <String>[
+                            'Anuradhapura',
+                            'Colombo',
+                            'Gampaha',
+                            'Kurunegala',
+                            'Jaffna',
+                            'Galle',
+                            'Kandy',
+                            'Matara'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView(
+                      children: list
+                          .map(
+                            (e) => Card(
+                              elevation: 5,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin:
+                                        EdgeInsets.only(left: 10.0, top: 10.0),
+                                    alignment: Alignment.topLeft,
+                                    child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: IconButton(
+                                          alignment: Alignment.topRight,
+                                          iconSize: 20,
+                                          icon: Icon(Icons.edit),
+                                          onPressed: () =>
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          RequestPage(
+                                                    id: e.id,
+                                                  ),
+                                                ),
+                                              )),
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          '${e.name}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          'Blood Group : ${e.group}',
+                                          style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          'Hospital : ${e.hospitalName}',
+                                          style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0,
+                                            top: 10.0,
+                                            bottom: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          '${e.contactNumber}',
+                                          style: TextStyle(
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                          .toList()),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
