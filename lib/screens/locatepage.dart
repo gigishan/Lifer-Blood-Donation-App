@@ -22,10 +22,15 @@ class _LocatePageState extends State<LocatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          'LOCATE',
+          style: TextStyle(fontSize: 18.0, color: Colors.white70),
+        ),
+        backgroundColor: Colors.red[400],
         elevation: 0.0,
         leading: IconButton(
-          color: Colors.grey,
+          color: Colors.white,
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pushNamed(context, '/');
@@ -34,10 +39,12 @@ class _LocatePageState extends State<LocatePage> {
       ),
       body: Container(
         child: DefaultTabController(
-          length: 4,
+          length: 2,
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
+                contentPadding: EdgeInsets.symmetric(horizontal: 64),
+                height: 75.0,
                 backgroundColor: Colors.red,
                 unselectedBackgroundColor: Colors.grey[300],
                 unselectedLabelStyle: TextStyle(color: Colors.black),
@@ -50,23 +57,23 @@ class _LocatePageState extends State<LocatePage> {
                     text: "REQUESTS",
                   ),
                   Tab(
-                    text: "HOSPITALS",
-                  ),
-                  Tab(
-                    text: "BANKS",
-                  ),
-                  Tab(
                     text: "CAMPS",
                   ),
+                  // Tab(
+                  //   text: "HOSPITALS",
+                  // ),
+                  // Tab(
+                  //   text: "BANKS",
+                  // ),
                 ],
               ),
               Expanded(
                 child: TabBarView(
                   children: <Widget>[
                     Center(child: BloodRequestCard()),
-                    Center(child: Cards()),
-                    Center(child: Cards()),
                     Center(child: CampaignCard()),
+                    // Center(child: Cards()),
+                    // Center(child: Cards()),
                   ],
                 ),
               ),

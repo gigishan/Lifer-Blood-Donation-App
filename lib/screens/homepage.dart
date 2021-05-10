@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red[400],
         elevation: 0.0,
       ),
       body: Container(
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
               child: Image(image: AssetImage('assets/images/lifer_logo.png')),
             ),
             SizedBox(
-              height: 40.0,
+              height: 60.0,
             ),
             Container(
               height: 70.0,
@@ -104,11 +104,18 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 100.0,
+              height: 80.0,
             ),
             Container(
               child: Text('liferapplk@gmail.com',
                   style: TextStyle(fontSize: 12.0, color: Colors.black54)),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Container(
+              child: Text('Developed & Maintained by GiGiSHANSOFT',
+                  style: TextStyle(fontSize: 10.0, color: Colors.black54)),
             )
           ],
         ),

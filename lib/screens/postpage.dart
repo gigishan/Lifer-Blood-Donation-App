@@ -31,10 +31,15 @@ class _PostPageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          'POST CAMPAIGN',
+          style: TextStyle(fontSize: 18.0, color: Colors.white70),
+        ),
+        backgroundColor: Colors.red[400],
         elevation: 0.0,
         leading: IconButton(
-          color: Colors.grey,
+          color: Colors.white,
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pushNamed(context, '/');

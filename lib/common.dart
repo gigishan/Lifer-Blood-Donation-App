@@ -59,7 +59,7 @@ showLoading(BuildContext context) {
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             title: Center(
               child: Text(
-                'Please Wait',
+                'PLEASE WAIT',
               ),
             ),
             content: SizedBox(
