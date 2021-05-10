@@ -9,7 +9,7 @@ showContentDialog(BuildContext context, String content,
         return AlertDialog(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(15))),
-          title: Center(child: Text("Notice", style: TextStyle())),
+          title: Center(child: Text("NOTICE", style: TextStyle())),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -34,7 +34,7 @@ showContentDialog(BuildContext context, String content,
                     color: Colors.red,
                     child: Center(
                       child: Text(
-                        'Ok',
+                        'OK',
                         style: TextStyle(fontSize: 19.0, color: Colors.white),
                       ),
                     ),
