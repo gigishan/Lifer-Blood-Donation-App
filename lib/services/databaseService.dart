@@ -43,6 +43,19 @@ class DatabaseService {
     }
   }
 
+  Future<bool> deletePostCampaign(Campaign campaign, String id) async {
+    try {
+      var doc = await firebase.collection(campaignCollection).doc(id).get();
+      var oldCampaign = Campaign.fromMap(doc.data());
+      if (oldCampaign.nic != campaign.nic) return false;
+      await firebase.collection(campaignCollection).doc(id).delete();
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   Future<bool> editRequestBoold(BloodRequest request, String id) async {
     try {
       var doc = await firebase.collection(bloodRequestCollection).doc(id).get();
@@ -52,6 +65,19 @@ class DatabaseService {
           .collection(bloodRequestCollection)
           .doc(id)
           .update(request.toMap());
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  Future<bool> deleteBloodRequest(BloodRequest request, String id) async {
+    try {
+      var doc = await firebase.collection(bloodRequestCollection).doc(id).get();
+      var oldRequest = BloodRequest.fromMap(doc.data());
+      if (oldRequest.nic != request.nic) return false;
+      await firebase.collection(bloodRequestCollection).doc(id).delete();
       return true;
     } catch (e) {
       print(e);

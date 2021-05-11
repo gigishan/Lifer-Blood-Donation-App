@@ -238,59 +238,133 @@ class _RequestPageState extends State<RequestPage> {
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20.0, bottom: 20.00),
-                      height: 40.0,
-                      width: 150.0,
-                      child: GestureDetector(
-                        onTap: () async {
-                          FocusScope.of(context).unfocus();
-                          if (!bloodRequest.validateAll())
-                            return showContentDialog(
-                                context, 'FIELDS CANNOT BE EMPTY');
-                          showLoading(context);
-                          var res;
-                          if (widget.id == null)
-                            res = await DatabaseService()
-                                .requestBoold(bloodRequest);
-                          else
-                            res = await DatabaseService()
-                                .editRequestBoold(bloodRequest, widget.id);
+                    widget.id == null
+                        ? Container(
+                            margin: EdgeInsets.only(top: 20.0, bottom: 20.00),
+                            height: 40.0,
+                            width: 150.0,
+                            child: GestureDetector(
+                              onTap: () async {
+                                FocusScope.of(context).unfocus();
+                                if (!bloodRequest.validateAll())
+                                  return showContentDialog(
+                                      context, 'FIELDS CANNOT BE EMPTY');
+                                showLoading(context);
+                                var res = await DatabaseService()
+                                    .requestBoold(bloodRequest);
 
-                          Navigator.pop(context);
-                          if (res) if (widget.id == null)
-                            showContentDialog(
-                                context, 'REQUEST ADDED SUCCESSFULLY',
-                                action: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            });
-                          else
-                            showContentDialog(
-                                context, 'REQUEST EDITED SUCCESSFULLY',
-                                action: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            });
-                          else if (widget.id == null)
-                            showContentDialog(context, 'REQUEST FAILED');
-                          else
-                            showContentDialog(
-                                context, 'NIC MISMATCH, CANNOT EDIT REQUEST');
-                        },
-                        child: Material(
-                          borderRadius: BorderRadius.circular(20.0),
-                          color: Colors.red,
-                          child: Center(
-                            child: Text(
-                              widget.id == null ? 'REQUEST' : 'EDIT REQUEST',
-                              style: TextStyle(
-                                  fontSize: 19.0, color: Colors.white),
+                                Navigator.pop(context);
+                                if (res)
+                                  showContentDialog(
+                                      context, 'REQUEST ADDED SUCCESSFULLY',
+                                      action: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  });
+                                else
+                                  showContentDialog(context, 'REQUEST FAILED');
+                              },
+                              child: Material(
+                                borderRadius: BorderRadius.circular(20.0),
+                                color: Colors.red,
+                                child: Center(
+                                  child: Text(
+                                    'REQUEST',
+                                    style: TextStyle(
+                                        fontSize: 19.0, color: Colors.white),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ),
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                margin:
+                                    EdgeInsets.only(top: 20.0, bottom: 20.00),
+                                height: 40.0,
+                                width: 150.0,
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    FocusScope.of(context).unfocus();
+                                    if (!bloodRequest.validateAll())
+                                      return showContentDialog(
+                                          context, 'FIELDS CANNOT BE EMPTY');
+                                    showLoading(context);
+                                    var res = await DatabaseService()
+                                        .deleteBloodRequest(
+                                            bloodRequest, widget.id);
+                                    Navigator.pop(context);
+                                    if (res)
+                                      showContentDialog(context,
+                                          'REQUEST DELETED SUCCESSFULLY',
+                                          action: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      });
+                                    else
+                                      showContentDialog(context,
+                                          'NIC MISMATCH, CANNOT DELETE REQUEST');
+                                  },
+                                  child: Material(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: Colors.red,
+                                    child: Center(
+                                      child: Text(
+                                        'DELETE',
+                                        style: TextStyle(
+                                            fontSize: 19.0,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    EdgeInsets.only(top: 20.0, bottom: 20.00),
+                                height: 40.0,
+                                width: 150.0,
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    FocusScope.of(context).unfocus();
+                                    if (!bloodRequest.validateAll())
+                                      return showContentDialog(
+                                          context, 'FIELDS CANNOT BE EMPTY');
+                                    showLoading(context);
+                                    var res = await DatabaseService()
+                                        .editRequestBoold(
+                                            bloodRequest, widget.id);
+
+                                    Navigator.pop(context);
+                                    if (res)
+                                      showContentDialog(context,
+                                          'REQUEST EDITED SUCCESSFULLY',
+                                          action: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      });
+                                    else
+                                      showContentDialog(context,
+                                          'NIC MISMATCH, CANNOT EDIT REQUEST');
+                                  },
+                                  child: Material(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: Colors.red,
+                                    child: Center(
+                                      child: Text(
+                                        'EDIT REQUEST',
+                                        style: TextStyle(
+                                            fontSize: 19.0,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
                   ],
                 ),
               ),
