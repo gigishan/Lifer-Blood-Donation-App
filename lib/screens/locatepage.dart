@@ -431,8 +431,21 @@ class _CampaignCardState extends State<CampaignCard> {
                                             left: 10.0, top: 10.0),
                                         alignment: Alignment.topLeft,
                                         child: Text(
+                                          '${e.date}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey[600],
+                                              fontSize: 16.0),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
                                           '${e.location}',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: Colors.grey[600],
                                               fontSize: 16.0),
                                         ),
@@ -602,6 +615,7 @@ class _BloodRequestCardState extends State<BloodRequestCard> {
                                         child: Text(
                                           'Hospital : ${e.hospitalName}',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: Colors.grey[600],
                                               fontSize: 16.0),
                                         ),
@@ -615,6 +629,7 @@ class _BloodRequestCardState extends State<BloodRequestCard> {
                                         child: Text(
                                           '${e.contactNumber}',
                                           style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: Colors.grey[600],
                                               fontSize: 16.0),
                                         ),

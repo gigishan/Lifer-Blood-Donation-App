@@ -64,7 +64,7 @@ class _PostPageState extends State<PostPage> {
                       margin: EdgeInsets.fromLTRB(140.0, 0.0, 130.0, 0.0),
                       child: Image(image: AssetImage('assets/images/camp.png')),
                     ),
-                    SizedBox(height: 30.0),
+                    SizedBox(height: 20.0),
                     Container(
                       margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
                       child: TextFormField(
@@ -92,7 +92,7 @@ class _PostPageState extends State<PostPage> {
                                 color: Colors.grey[600], fontSize: 16.0),
                           ),
                         ),
-                        SizedBox(height: 70.0),
+                        SizedBox(height: 40.0),
                         Container(
                           height: 35.0,
                           margin: EdgeInsets.only(left: 15.0),
@@ -132,6 +132,24 @@ class _PostPageState extends State<PostPage> {
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(height: 1.0),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
+                      child: TextFormField(
+                        initialValue: campaign.date,
+                        onChanged: (val) => campaign.date = val,
+                        decoration: InputDecoration(
+                          labelText: 'Date',
+                          hintText: 'DD/MM/YYYY',
+                          labelStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(height: 5.0),
                     Container(
@@ -224,7 +242,8 @@ class _PostPageState extends State<PostPage> {
                                     Navigator.pop(context);
                                   });
                                 else
-                                  showContentDialog(context, 'CAMPAIGN POSTING FAILED');
+                                  showContentDialog(
+                                      context, 'CAMPAIGN POSTING FAILED');
                               },
                               child: Material(
                                 borderRadius: BorderRadius.circular(20.0),
@@ -255,7 +274,8 @@ class _PostPageState extends State<PostPage> {
                                           context, 'FIELDS CANNOT BE EMPTY');
                                     showLoading(context);
                                     var res = await DatabaseService()
-                                        .deletePostCampaign(campaign, widget.id);
+                                        .deletePostCampaign(
+                                            campaign, widget.id);
                                     Navigator.pop(context);
                                     if (res)
                                       showContentDialog(context,
@@ -275,7 +295,7 @@ class _PostPageState extends State<PostPage> {
                                       child: Text(
                                         'DELETE',
                                         style: TextStyle(
-                                            fontSize: 19.0,
+                                            fontSize: 17.0,
                                             color: Colors.white),
                                       ),
                                     ),
@@ -316,7 +336,7 @@ class _PostPageState extends State<PostPage> {
                                       child: Text(
                                         'EDIT CAMPAIGN',
                                         style: TextStyle(
-                                            fontSize: 19.0,
+                                            fontSize: 17.0,
                                             color: Colors.white),
                                       ),
                                     ),

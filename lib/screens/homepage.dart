@@ -14,6 +14,11 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'LIFEr',
+            style: TextStyle(fontSize: 18.0, color: Colors.white70),
+          ),
           automaticallyImplyLeading: false,
           backgroundColor: Colors.red[400],
           elevation: 0.0,
